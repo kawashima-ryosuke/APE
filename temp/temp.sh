@@ -13,13 +13,13 @@ echo "Making tutorial directry"
 mkdir $curpath/tutorial
 mkdir $curpath/tutorial/out
 mkdir $curpath/tutorial/data
-cp -r /Users/ryousuke/Documents/temp/program $curpath/tutorial/
+cp -r $curpath/program $curpath/tutorial/
 else
 echo "Now making"
 mkdir $curpath/$name
 mkdir $curpath/$name/out
 mkdir $curpath/$name/data
-cp -r /Users/ryousuke/Documents/temp/program $curpath/$name/
+cp -r $curpath/program $curpath/$name/
 fi
 cd $curpath
 echo "Program finished"
