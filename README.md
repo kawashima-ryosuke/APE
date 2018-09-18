@@ -4,7 +4,7 @@
 このリポシトリをcloneした後にまずして欲しいこと。
 
 1.~/.bashrc内に
-	alias hogehoge='source /***/***/**/temp.sh'
+	alias hogehoge='source [eppのパス]/epp/temp/temp.sh'
 　を記入しどこからでもシェルスクリプトを実行できるようにする。hogehogeのところは自由に名前をつけてください。
 
 2.同様に~/.bashrc内に
