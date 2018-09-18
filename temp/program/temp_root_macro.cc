@@ -20,9 +20,9 @@ using namespace std;
 #include <TGraphErrors.h>
 #include <TMultiGraph.h>
 //My include
-#include "include/canvas_setting.C"
-#include "include/histgram_setting.C"
-#include "include/function.C"
+#include "include/canvas_setting.h"
+#include "include/histgram_setting.h"
+#include "include/function.h"
 /*
 Version Informarion
 ver 1.01 (latest,2018/9/14 kawashima)
