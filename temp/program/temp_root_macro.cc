@@ -39,11 +39,12 @@ Int_t main(){
   const Int_t letter_num = 256;//any
   //output_file name and mode (if you need, chage mode to ON)
   Int_t output_file_mode = OFF; //Set ON or OFF
-  char output_file_directory[letter_num] = "../out";//Set Directory of output file (if you need)
+  char output_file_directory[letter_num] = "../out";
+  char new_directory_name[letter_num] = "/hogehoge";//Set Directory name
   //logfile name and directory
   Int_t log_file_mode = ON; //Set ON or OFF
-  char logfile_directory[letter_num] = "../out";//Set Directory
-
+  char logfile_directory[letter_num] = "";
+  strcpy(logfile_directory, output_file_directory);
   //--------- Set graph and canvas -------------------------------------------------
   //canvas
   //canvas variables
@@ -69,7 +70,15 @@ Int_t main(){
   //+++++++++++++++++++++++++++++++++++++++
 
   //-------------------------------------------------------------------------------
-
+  cout << "Make Directory" << endl;
+  if(mkdir(Form("%s",output_file_directory,new_directory_name),0775)==0){
+    cout << "Make Output file success" << endl;
+  }
+  else{
+    cout << "CAN NOT make Output file or Already have existed" << endl;
+  }
+  strcat(output_file_directory,new_directory_name);
+  strcat(logfile_directory,new_directory_name);
   //-------------------- Set Tree -------------------------------------------------
   char datafile_directry[letter_num] = "../data";//Set Directory
   char tree_name[letter_num] = "tr";//Set Directory
