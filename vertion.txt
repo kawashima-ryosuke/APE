@@ -2,6 +2,7 @@
 中程度なら少数第一位、小さな修正は少数第二位を１増やす。
 
 Version Informarion
-ver 1.01 (latest,2018/9/14 kawashima)
+ver 1.02 (latest,2018/10/25 kawashima)
+ver 1.01 (latest, kawashima)
 ver 1.00 (2018/9/13 kawashima)
 

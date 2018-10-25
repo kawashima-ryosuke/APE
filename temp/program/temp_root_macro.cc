@@ -25,15 +25,18 @@ using namespace std;
 #include "include/function.h"
 /*
 Version Informarion
-ver 1.01 (latest,2018/9/14 kawashima)
+ver 1.02 (latest,2018/10/25 kawashima)
 */
 
 /*
 This program is a templete macro for analysys.
 When you use this macro, change "variables name" and set directories to save the results of this macro.
  */
-
-Int_t main(){
+#ifdef __CINT__
+int temp_root_macro(){
+#else
+  int main(){
+#endif
   const Int_t ON = 1;
   const Int_t OFF = 0;
   const Int_t letter_num = 256;//any
