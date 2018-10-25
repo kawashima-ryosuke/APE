@@ -1,16 +1,21 @@
-/*
---------------Definition of fitting function-----------
-updated 2018/02/14 by kawashima
----------------------how to use ------------------
-write following statement in your main proggram.(example is gaus fitting)
-hogehoge is function name. Don't use same name.
+#include <stdio.h>
+#include <time.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include "define.h"
 
-TF1 *hogehoge = f1_gaus();
-hogehoge->SetParameter("Height", Height_value);
-hogehoge->SetParameter("Mean"  , Mean_value  );
-hogehoge->SetParameter("Sigma" , Sigma_value );
-hist->Fit(hogehoge,"Q","");
-*/
+//data function
+char* date_function(){
+  char date[letter_num];
+  time_t t = time(NULL);
+  strftime(date, sizeof(date), "%Y/%m/%d/ %a %H:%M:%S", localtime(&t));
+  return date;
+}
+
+//colorfunction
 Int_t color_function(char *color){
   Int_t col_num = 1;
   
@@ -37,7 +42,19 @@ Int_t color_function(char *color){
   }
   return col_num;
 }
+/*
+--------------Definition of fitting function-----------
+updated 2018/02/14 by kawashima
+---------------------how to use ------------------
+write following statement in your main proggram.(example is gaus fitting)
+hogehoge is function name. Don't use same name.
 
+TF1 *hogehoge = f1_gaus();
+hogehoge->SetParameter("Height", Height_value);
+hogehoge->SetParameter("Mean"  , Mean_value  );
+hogehoge->SetParameter("Sigma" , Sigma_value );
+hist->Fit(hogehoge,"Q","");
+*/
 TF1*f1_linear(Double_t x_min,Double_t x_max,char *color){
   TF1*f = new TF1("f1_liner", "pol1(0)",x_min, x_max);
   f->SetParNames("Intercept", "Slope");
@@ -54,7 +71,6 @@ TF1*f1_exp(Double_t x_min,Double_t x_max,char *color){
   f->SetLineWidth(2);
   return f;
 }
-// gausian
 TF1*f1_gaus(Double_t x_min,Double_t x_max,char *color){
   TF1*f = new TF1("f1_gaus", "gaus(0)",x_min, x_max);
   f->SetParNames("Height", "Mean", "Sigma");
@@ -71,5 +87,6 @@ TF1*f1_landau(Double_t x_min,Double_t x_max,char *color){
   f->SetLineWidth(2);
   return f;
 }
+
 
 

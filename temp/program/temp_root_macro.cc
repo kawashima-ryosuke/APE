@@ -54,8 +54,7 @@ int temp_root_macro(){
     Double_t canvas_w = 1000.;//canvas width 
     Double_t canvas_h = 500.;//canvas height
     //canvas setting
-    Int_t box_posi = 0;//0:right top
-    TCanvas *c1 = canvas_setting(canvas_w,canvas_h,box_posi);
+    TCanvas *c1 = canvas_setting(canvas_w,canvas_h,right_top);
 
     //HISTGRAM
     //histgram variables
@@ -160,13 +159,9 @@ int temp_root_macro(){
 	return 1;
       }
       cout << "Log File Writting" << endl;
-      //note time in the log file
-      char date[letter_num];
-      time_t t = time(NULL);
-      strftime(date, sizeof(date), "%Y/%m/%d/ %a %H:%M:%S", localtime(&t));
       //=======================================================================
       //Contents of log file
-      fprintf(log_file, "#%s\n",date);
+      fprintf(log_file, "#%s\n",date_function());
       fprintf(log_file, "#temp_root_macro.cc Result\n");
       fprintf(log_file, "I_vari1 = %d\n",I_vari1);
       fprintf(log_file, "D_vari1 = %f\n",D_vari1);
