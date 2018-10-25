@@ -51,7 +51,8 @@ Int_t main(){
   Double_t canvas_w = 1000.;//canvas width 
   Double_t canvas_h = 500.;//canvas height
   //canvas setting
-  TCanvas *c1 = canvas_setting(canvas_w,canvas_h);
+  Int_t box_posi = 0;//0:right top
+  TCanvas *c1 = canvas_setting(canvas_w,canvas_h,box_posi);
 
   //histgram 
   //histgram variables
