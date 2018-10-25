@@ -22,10 +22,11 @@ using namespace std;
 //My include
 #include "include/canvas_setting.h"
 #include "include/histgram_setting.h"
+#include "include/graph_setting.h"
 #include "include/function.h"
 /*
 Version Informarion
-ver 1.02 (latest,2018/10/25 kawashima)
+ver 2.00 (latest,2018/10/25 kawashima)
 */
 
 /*
@@ -42,7 +43,7 @@ int temp_root_macro(){
   const Int_t letter_num = 256;//any
   //output_file name and mode (if you need, chage mode to ON)
   Int_t output_file_mode = OFF; //Set ON or OFF
-  char output_file_directory[letter_num] = "../out";
+  char output_file_directory[letter_num] = "../out/";
   char new_directory_name[letter_num] = "/hogehoge";//Set Directory name
   //logfile name and directory
   Int_t log_file_mode = ON; //Set ON or OFF
@@ -59,7 +60,7 @@ int temp_root_macro(){
 
   //histgram 
   //histgram variables
-  Int_t x_min = 0.,x_max = 1000.;
+  Double_t x_min = 0.,x_max = 1000.;
   Int_t bin_w = 10.;
   Int_t x_bin = (x_max - x_min)/bin_w;
   char title[letter_num] = "title";
@@ -67,15 +68,14 @@ int temp_root_macro(){
   char y_title[letter_num] = "y_title";
   //hist setting
   TH1D *hist = histgram_setting(x_min,x_max,x_bin,title,x_title,y_title);
-
-  //++++++++++ COMING SOON !!! ++++++++++++
-  //graph
-  //Fit function
-  //+++++++++++++++++++++++++++++++++++++++
-
+  //graph setting
+  TGraphErrors *gr = graph_setting(title,x_title,y_title);
+  //function
+  char color[letter_num] = "kRed";
+  TF1 *func = f1_exp(x_min,x_max,color);
   //-------------------------------------------------------------------------------
   cout << "Make Directory" << endl;
-  if(mkdir(Form("%s",output_file_directory,new_directory_name),0775)==0){
+  if(mkdir(Form("%s%s",output_file_directory,new_directory_name),0775)==0){
     cout << "Make Output file success" << endl;
   }
   else{

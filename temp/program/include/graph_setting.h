@@ -18,8 +18,6 @@
 #include <TPaveText.h>
 #include <TPaveStats.h>
 
-
-
 TGraphErrors *graph_setting(char* title,char* x_title,char*y_title){
   TGraphErrors* gr = new TGraphErrors();
   Float_t size = 0.05;
