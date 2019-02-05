@@ -1,19 +1,19 @@
 このリポジトリ内のプログラムは解析用マクロをつくるためのものです。
 現在Gitのお勉強とともに工事中
 
+初期設定
 このリポシトリをcloneした後にまずして欲しいこと。
 1.~/.bashrc内に
-	alias hogehoge='source [eppのパス]/epp/temp/temp.sh'
+	alias hogehoge='source [APEレポジトリのパス]/temp/temp.sh'
 　を記入しどこからでもシェルスクリプトを実行できるようにする。hogehogeのところは自由に名前をつけてください。
 
 2.同様に~/.bashrc内に
-	alias epp_temp='echo [eppのパス]/epp/temp'
-　を記入し、temp.shが正常に動くようにする。epp_tempという名前は絶対に守ってください。
+	alias ape_temp='echo [eppレポジトリのパス]/temp'
+　を記入し、temp.shが正常に動くようにする。ape_tempという名前は絶対に守ってください。
+  (シェルスクリプトtemp.sh内で使用しているため)
 
 使い方
 解析マクロを作りたい任意のディレクトリにおいて、hogehoge(自分のalias設定したパス)と打つ。
 ディレクトリ名を入力してエンター。
 これにてディレクトリ作成は完了。
 
-次に、temp_root_macro.ccの編集。ファイル名を適当な名前に変える。この時、Makefile内の名前も変えることに注意。
-同じディレクトリ内に他のマクロも作りたい時もMakefile内にそれを追加することを忘れずにしてください。

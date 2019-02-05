@@ -20,8 +20,6 @@
 
 TCanvas *canvas_setting(Double_t c1_w, Double_t c1_h, Int_t position){
   //canvas parameter
-  //const Int_t    c1_w = 700; // canvas width
-  //const Int_t    c1_h = 500; // canvas height
   const Int_t    c1_mw =  2; // width margin ( canvas size is contain toolbar height & flame width )
   const Int_t    c1_mh = 28; // height margin
   const Double_t pad_margin_top    = 0.132;
@@ -40,18 +38,27 @@ TCanvas *canvas_setting(Double_t c1_w, Double_t c1_h, Int_t position){
   c1->SetGrid();
   gStyle->SetOptStat(110); // print entries & mean
   gStyle->SetOptFit (111); // print parameter & error & Chi^2
-  //gStyle->SetStatFontSize(legend_char_height);
+
   if(position == 0){
-    //right side
-    gStyle->SetStatX(1.0-pad_margin_right+0.03);
-    gStyle->SetStatY(1.0-pad_margin_top  +0.03);
+    //right top
+    gStyle->SetStatX(1.0 -pad_margin_right +0.03);
+    gStyle->SetStatY(1.0 -pad_margin_top   +0.03);
   }
-  if(position == 1){
-    //left side
-    gStyle->SetStatX(0.5);
-    gStyle->SetStatY(1.0 - pad_margin_top +0.03);
+  else if(position == 1){
+    //left top
+    gStyle->SetStatX(     pad_margin_right +0.3);
+    gStyle->SetStatY(1.0 -pad_margin_top   +0.03);
+  }
+  else if(position == 2){
+    //right bottom
+    gStyle->SetStatX(1.0 -pad_margin_right +0.03);
+    gStyle->SetStatY(     pad_margin_top   +0.25);
+  }
+  else if(position == 3){
+    //left bottom
+    gStyle->SetStatX(     pad_margin_right +0.3);
+    gStyle->SetStatY(     pad_margin_top   +0.25);
   }
   TGaxis::SetMaxDigits(4);
-
   return c1;
 }

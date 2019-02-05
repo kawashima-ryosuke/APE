@@ -1,0 +1,35 @@
+#ifndef   MAKEDIR_H
+#define   MAKEDIR_H
+#include "../include/define.h"
+
+int makedir_func(char** argv,char *datafile_directry,char *output_file_directory,char *logfile_directory){
+
+  struct stat statBuf;
+  while(stat(Form("%s%s/%s.root",datafile_directry,argv[1],argv[1]), &statBuf) != 0){
+    cout << Form("%s%s/%s.root",datafile_directry,argv[1],argv[1]) << endl;
+    cout << "No such rootfile. Reset rootfile name (with extension name)" << endl;
+    cin >> argv[1];
+  }
+
+  
+  strcat(datafile_directry,argv[1]);
+  strcat(datafile_directry,"/");
+  strcat(datafile_directry,argv[1]);
+  cout << Form("  + Datafile") << endl;
+  cout << Form("  + %s.root",datafile_directry) << endl;
+  
+  cout << "> Make Directory" << endl;
+  mkdir(Form("%s%s",output_file_directory,argv[1]),0775);
+  if(stat(Form("%s%s",output_file_directory,argv[1]), &statBuf) == 0){
+    cout << "  + SUCCESS" << endl;
+  }
+  else{
+    cout << "  + CAN NOT make Output file" << endl;
+    return 1;
+  }
+  strcat(output_file_directory,argv[1]);
+  strcat(logfile_directory,argv[1]);
+  return 0;
+}
+
+#endif // MAKEDIR_H

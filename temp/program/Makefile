@@ -1,4 +1,4 @@
-TARGET = temp_root_macro
+TARGET1 = temp_root_macro
 
 SRCS = $(TARGET).cc
 OBJS = $(TARGET).o
@@ -11,8 +11,10 @@ CXXFLAGS   = $(ROOTCFLAGS) -Wall -fPIC
 CXXLIBS    = $(ROOTLIBS)
 CC = g++ 
 
-$(TARGET): $(OBJS)
-	$(CC) $(CXXLIBS) $(OBJS) -o $@
+all:temp_root_macro
+
+temp_root_macro: temp_root_macro.o
+	$(CC) $(CXXLIBS) temp_root_macro.o -o $@
 
 # suffix rule
 .cc.o:
@@ -20,4 +22,4 @@ $(TARGET): $(OBJS)
 
 # clean
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f temp_root_macro
