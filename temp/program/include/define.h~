@@ -17,10 +17,7 @@ char output_file_directory[letter_num] = "../out/";
 //logfile name and directory(if you need, chage mode to ON)
 Int_t log_file_mode = ON; //Set ON or OFF
 char logfile_directory[letter_num] = "../out/";
-char new_directory_name[letter_num];//Set Directory name
 
-//canvas variablesn
-Double_t canvas_w = 1250.;//canvas width
-Double_t canvas_h = 1000.;//canvas height
+char new_directory_name[letter_num];//Set Directory name
 
 #endif // DEFINE_H

@@ -17,8 +17,10 @@ int output_func(Double_t *fit_par,Double_t *fit_par_err,char *output_file_direct
   //=======================================================================
   //Contents of output file
   fprintf(out_file, "#temp_root_macro.cc Output file\n");
-  for(int i=0;i<sizeof(fit_par)/sizeof(fit_par[0]);i++){
-    fprintf(out_file, "%d %f %f\n",i,fit_par[i],fit_par_err[i]);
+  for(int i=0;i<par_num;i++){
+    if(fit_par[i] != 0.){
+      fprintf(out_file, "%d %f %f\n",i,fit_par[i],fit_par_err[i]);
+    }
   }
   fprintf(out_file, "#End of File");
   //=======================================================================

@@ -44,32 +44,30 @@ int main(int argc, char** argv)
 {
   //SET data file and DIRECTORY MAKING
   char datafile_directry[letter_num] = "../data/";
-  if(argv[1] == NULL){
-    cout << "No datafile name. Please set file name" << endl;
-    cout << "File name: " << endl;
-    cin >> argv[1];
+  //directory name is written in define.h
+  if(argv[1] == "\0" || argv[1] == NULL){
     argv[1] = "tutorial";
   }
   makedir_func(argv,datafile_directry,output_file_directory,logfile_directory);
 
   //CANVAS
+  //canvas variablesn
+  Double_t canvas_w = 1250.;//canvas width 
+  Double_t canvas_h = 1000.;//canvas height
   //canvas setting(width,height,box potision)
   TCanvas *c1 = canvas_setting(canvas_w,canvas_h,right_top);
   
   //HIST and GRAPH
   //histgram variables
-  Double_t x_min = 100.,x_max = 150.,bin_w = 0.1;
-  Int_t x_bin = 500;
+  Double_t x_min = 100.,x_max = 150.;
+  Double_t bin_w = 0.1;
   //Int_t x_bin = (x_max - x_min)/bin_w;
-
+  Int_t x_bin = 500;
   //hist and graph setting
-  //histgram settinh(x_min,x_max,x_bin,title,x_title,y_title)
   TH1D *hist = histgram_setting(x_min,x_max,x_bin,Form("title"),Form("x_title"),Form("y_title"));
-  //graph settinh(title,x_title,y_title)
   TGraph *gr = graph_setting(Form("title"),Form("x_title"),Form("y_title"));
   
   //FIT FUNCTION
-  //FunctionName(x_min,x_max)
   TF1 *func = f1_gaus(x_min,x_max);
 
   //TTREE SET ADRESS
@@ -87,6 +85,9 @@ int main(int argc, char** argv)
   TTree *tree = (TTree*)rootfile->Get(tree_name);
   cout << "  + Read Branch and Fill" << endl;
   tree -> SetBranchAddress(branch_name[0], &f_gaus);
+  
+  //MyClass
+  //MyClass *myclass = new MyClass();
 
   /************************************************************************
      MAIN PART OF THIS ANALYSIS

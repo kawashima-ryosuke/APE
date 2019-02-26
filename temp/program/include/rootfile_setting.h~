@@ -1,0 +1,6 @@
+void rootfile_setting(){
+  TObjArray *leaves = tree->GetListOFLeaves();
+  Int_t nleaces = leaves?leasves->GetEntriesFast():0;
+  TDatime td;
+  
+}
